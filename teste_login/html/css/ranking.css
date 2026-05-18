@@ -1,0 +1,326 @@
+:root {
+    --fundo-corpo-topo: #1f113a;    /* Roxo escuro um pouco mais vivo */
+    --fundo-corpo-base: #0f081d;    /* Tom escuro para o gradiente, sem ser preto total */
+    --fundo-container: #0f0c1b;
+    --fundo-card: #171226;
+    --fundo-card-hover: #211936;
+    --fundo-modal: #130d24;
+    --fundo-caixa-interna: #0b0617;
+    --fundo-caixa-dica: #061712;
+
+    /* Cores de Destaque e Bordas */
+    --roxo-neon: #8b5cf6;           /* Cor principal */
+    --roxo-claro: #a78bfa;          /* Cor para houver/destaques */
+    --borda-principal: #3d245c;
+    --borda-card: #2f1d4b;
+    
+    /* Cores de Texto */
+    --texto-claro: #f3f4f6;
+    --texto-roxo: #a78bfa;
+    --texto-escuro-apagado: #5c487e;
+
+    /* Cores dos Ranks e Dicas */
+    --cor-ouro: #eab308;
+    --cor-prata: #94a3b8;
+    --cor-bronze: #8b5cf6;
+    --cor-verde-dica: #34d399;
+}
+
+/* Configurações Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top, var(--fundo-corpo-topo) 0%, var(--fundo-corpo-base) 100%);
+    color: var(--texto-claro);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container Principal */
+.rank-container {
+    background-color: var(--fundo-container);
+    width: 100%;
+    max-width: 650px;
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(139, 92, 246, 0.15);
+    border: 1px solid var(--borda-principal);
+}
+
+/* Botão Voltar */
+.header-actions {
+    margin-bottom: 15px;
+}
+
+.voltar {
+    background: #1a1129;
+    color: var(--texto-roxo);
+    border: 1px solid #4c2885;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.voltar:hover {
+    background-color: var(--roxo-neon);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+    border-color: #c084fc;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 2.2rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, #ffffff 20%, var(--texto-roxo) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Lista de Cards */
+.rank-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Card Padrão Geral */
+.rank-card {
+    background-color: var(--fundo-card);
+    border: 1px solid var(--borda-card);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.rank-card:hover {
+    transform: translateX(4px);
+    background-color: var(--fundo-card-hover);
+    border-color: var(--roxo-neon);
+}
+
+.rank-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.posicao {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--texto-escuro-apagado);
+    min-width: 40px;
+}
+
+.nome-jogo {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #e5e7eb;
+}
+
+.rank-nota {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #fcd34d;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(252, 211, 77, 0.05);
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(252, 211, 77, 0.2);
+}
+
+.rank-card.interativo {
+    cursor: pointer;
+}
+
+/* 🥇 Top 1 - Glow de Ouro */
+.rank-card.primeiro {
+    background: linear-gradient(90deg, rgba(234, 179, 8, 0.1) 0%, var(--fundo-card) 70%);
+    border-color: var(--cor-ouro);
+    box-shadow: 0 0 15px rgba(234, 179, 8, 0.15);
+}
+.rank-card.primeiro .posicao { color: var(--cor-ouro); font-size: 1.5rem; }
+
+/* 🥈 Top 2 - Glow Prata */
+.rank-card.segundo {
+    background: linear-gradient(90deg, rgba(148, 163, 184, 0.1) 0%, var(--fundo-card) 70%);
+    border-color: var(--cor-prata);
+}
+.rank-card.segundo .posicao { color: var(--cor-prata); }
+
+/* 🥉 Top 3 - Glow Neon Roxo */
+.rank-card.terceiro {
+    background: linear-gradient(90deg, rgba(139, 92, 246, 0.15) 0%, var(--fundo-card) 70%);
+    border-color: var(--cor-bronze);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+}
+.rank-card.terceiro .posicao { color: var(--texto-roxo); }
+
+
+/* ==========================================================================
+   JANELA MODAL INTERATIVA (POPUP)
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(3, 2, 6, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.ativo {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background-color: var(--fundo-modal);
+    border: 1px solid #4c2885;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 14px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(139, 92, 246, 0.2);
+    transform: scale(0.85);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
+}
+
+.modal-overlay.ativo .modal-content {
+    transform: scale(1);
+}
+
+/* Container da Capa do Jogo */
+.modal-banner {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    border-bottom: 2px solid #4c2885;
+}
+
+.modal-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btn-fechar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2.2rem;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    cursor: pointer;
+    transition: color 0.2s;
+    z-index: 10;
+}
+
+.btn-fechar:hover { color: #ef4444; }
+
+.modal-header {
+    padding: 20px 25px 10px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.modal-body {
+    padding: 0 25px 25px 25px;
+    max-height: 380px;
+    overflow-y: auto;
+}
+
+.modal-body h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #c084fc;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.modal-body p {
+    color: #e5e7eb;
+    line-height: 1.5;
+    background: var(--fundo-caixa-interna);
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 3px solid var(--roxo-neon);
+    font-size: 0.95rem;
+}
+
+/* Caixa com estilo diferenciado para as Dicas */
+.modal-body p.box-dica {
+    border-left-color: var(--cor-verde-dica);
+    background: var(--fundo-caixa-dica);
+}
+
+/* Tags */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    background: #201335;
+    border: 1px solid #4c2885;
+    color: #ddd6fe;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Lista de Instalação */
+#modalLocais {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#modalLocais li {
+    background: #140d24;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #e5e7eb;
+    border: 1px solid var(--borda-principal);
+}
