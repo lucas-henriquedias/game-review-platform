@@ -1,39 +1,65 @@
 <?php
+/**conectar dados.php  */
 include("dados.php");
 
+/**Verifica se tem uma lista de avaliações  */
 if (isset($avaliacoes) && is_array($avaliacoes)) {
     arsort($avaliacoes);
 } else {
     $avaliacoes = [];
 }
-
-/**
- * CADASTRO DOS DETALHES DOS JOGOS
- * Troque "Minecraft", "GTA V", etc., pelos nomes EXATOS que estão no seu dados.php
- */
 $detalhes_jogos = [
-    "Minecraft" => [ 
-        "capa" => "https://images.unsplash.com/photo-1605901309584-818e25960a8f?q=80&w=500", // Coloque o link da imagem/capa aqui
-        "comentario" => "Um universo infinito de criatividade e sobrevivência. Excelente para jogar com amigos.",
-        "locais" => ["Site Oficial", "Xbox Store", "PlayStation Store"],
-        "caracteristicas" => ["Mundo Aberto", "Sobrevivência", "Crafting"],
-        "dicas" => "Nunca cave direto para baixo! Garanta uma plantação de trigo logo no primeiro dia para não passar fome."
+    "BioShock" => [
+    "capa" => "https://cdn.cloudflare.steamstatic.com/steam/apps/8870/header.jpg", // link da capa
+    "comentario" => "Um FPS incrível com uma história profunda e ambientação única na cidade subaquática de Rapture.",
+    "locais" => ["Steam", "Epic Games Store", "PlayStation Store"],
+    "caracteristicas" => [
+        "FPS", 
+        "Terror", 
+        "Ficção Científica", 
+        "História Profunda", 
+        "Single Player", 
+        "Atmosfera Sombria", 
+        "Ação", 
+        "Narrativo"
     ],
-    "GTA V" => [
-        "capa" => "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=500",
-        "comentario" => "Uma campanha fantástica com três personagens memoráveis e um modo online gigantesco.",
-        "locais" => ["Steam", "Epic Games Store", "Rockstar Games Launcher"],
-        "caracteristicas" => ["Ação", "Mundo Aberto", "Multiplayer"],
-        "dicas" => "No modo história, faça os assassinatos do Lester apenas depois de terminar o golpe final para faturar bilhões nas ações."
+    "dicas" => "Explore cada canto de Rapture para encontrar plasmids, áudios escondidos e recursos importantes."
+],
+            
+    "Hylics" => [
+    "capa" => "https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/Hylics_cover_art.jpg/220px-Hylics_cover_art.jpg", // link da capa
+    "comentario" => "Um RPG excêntrico e surreal com gráficos de argila e uma história absurda e criativa.",
+    "locais" => ["Steam", "itch.io"], // Onde é possível jogar/comprar
+    "caracteristicas" => [
+        "RPG",
+        "Surreal",
+        "Turn-Based",
+        "Single Player",
+        "Exploração",
+        "Arte Única",
+        "Humor Absurdo",
+        "Mundo Estranho"
     ],
-    "Valorant" => [
-        "capa" => "https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=500",
-        "comentario" => "Incrível FPS tático competitivo. Exige muita coordenação de equipe e mira afiada.",
-        "locais" => ["Riot Client", "Epic Games"],
-        "caracteristicas" => ["FPS", "Tático", "Competitivo"],
-        "dicas" => "Treine o posicionamento da sua mira sempre na altura da cabeça dos adversários (Crosshair Placement) antes de andar pelo mapa."
-    ]
-];
+    "dicas" => "Explore cada canto e interaja com tudo. Muitos segredos estão escondidos nas áreas mais inesperadas."
+],
+    
+   "Team Fortress 2" => [
+    "capa" => "https://cdn.cloudflare.steamstatic.com/steam/apps/440/header.jpg", // link da capa oficial
+    "comentario" => "Um FPS multiplayer clássico com classes distintas, ação frenética e muito humor.",
+    "locais" => ["Steam"], // Onde é possível jogar
+    "caracteristicas" => [
+        "FPS",
+        "Multiplayer",
+        "Clássico",
+        "Ação",
+        "Humor",
+        "Competitivo",
+        "Team-Based",
+        "Estratégia"
+    ],
+    "dicas" => "Combine diferentes classes com sua equipe. Use o ambiente a seu favor e preste atenção nos objetivos do mapa."
+],
+    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
