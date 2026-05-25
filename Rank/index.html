@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Arena Ranking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="stylestyle.css">
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex justify-center">
+    <div class="w-full max-w-3xl p-8">
+
+        <h1 class="text-6xl font-black text-center mb-10 text-amber-400">
+            RANKING
+        </h1>
+
+        <main id="lista-jogos"></main>
+
+        <div id="modalJogo" class="modal fixed inset-0 bg-black/80 justify-center items-center" onclick="fecharModal(event)">
+            <div class="bg-slate-900 p-6 rounded-2xl w-[400px] relative">
+                
+                <button class="absolute top-2 right-4 text-3xl text-slate-400 hover:text-white" onclick="document.getElementById('modalJogo').classList.remove('ativo')">
+                    &times;
+                </button>
+
+                <img id="modalCapa" class="rounded-xl mb-4">
+                <h2 id="modalNomeJogo" class="text-2xl font-bold"></h2>
+                
+                <p id="modalNotaJogo" class="text-amber-400 mb-3 font-bold"></p>
+                <p id="modalComentario" class="bg-slate-950/50 p-3 rounded-lg border border-slate-800"></p>
+                <p id="modalDicas" class="mt-3 bg-emerald-950/30 p-3 rounded-lg border border-emerald-800/50 text-emerald-400"></p>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </div>
+</body>
+</html>
