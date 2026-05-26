@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; /* Usando a fonte importada */
+}
+
+body {
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+nav.menu-lateral {
+    width: 80px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 40px 0 40px 1%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: width .3s ease; /* Transição mais suave */
+    border-right: 3px solid red; /* Substituí o box-shadow problemático */
+}
+
+nav.menu-lateral.expandir {
+    width: 300px;
+}
+
+.btn-expandir {
+    width: 100%;
+    padding-left: 10px;
+    margin-bottom: 30px;
+}
+
+.btn-expandir > i {
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li.sidebar_item {
+    transition: .3s;
+    margin-bottom: 10px;
+}
+
+ul li.ativo {
+    background-color: red;
+}
+
+ul li.sidebar_item:hover {
+    background-image: linear-gradient(to right, red, blue);
+}
+
+ul li.sidebar_item a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 15px 0;
+    display: flex;
+    align-items: center; 
+}
+
+ul li.sidebar_item a .sidebar_icon > i {
+    font-size: 24px;
+    margin-left: 15px;
+}
+
+ul li.sidebar_item a .sidebar_text {
+    margin-left: 30px;
+    white-space: nowrap; 
+}
