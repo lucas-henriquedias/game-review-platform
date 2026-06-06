@@ -3,7 +3,7 @@ const lista = document.getElementById('lista-jogos');
 const modal = document.getElementById('modalJogo');
 
 // BUSCA OS DADOS DO PHP
-fetch('ranking.php')
+fetch('../php/dados_ranking.php')
 .then(r => r.json())
 .then(dados => {
     detalhes = dados.detalhes;

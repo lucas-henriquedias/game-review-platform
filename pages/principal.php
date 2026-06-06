@@ -26,7 +26,7 @@ if (!isset($_SESSION['nome'])) {
 
         <ul>
             <li class="sidebar_item ativo">   
-                <a href="#">
+                <a href="principal.php">
                     <span class="sidebar_icon"><i class="bi bi-house-door"></i></span>
                     <span class="sidebar_text"> HOME</span>
                 </a>
@@ -38,13 +38,13 @@ if (!isset($_SESSION['nome'])) {
                 </a>
             </li>
             <li class="sidebar_item">   
-                <a href="#">
+                <a href="ranking.php">
                     <span class="sidebar_icon"><i class="bi bi-bar-chart-fill"></i></span>
                     <span class="sidebar_text">RANKING</span>
                 </a>
             </li>
             <li class="sidebar_item">   
-                <a href="#">
+                <a href="review.php">
                     <span class="sidebar_icon"><i class="bi bi-chat-left-text-fill"></i></span>
                     <span class="sidebar_text">REVIEW</span>
                 </a>

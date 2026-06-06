@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
+        $_SESSION['usuario_id'] = $user['id'];
         $_SESSION['nome'] = $user['nome'];
         header('Location: principal.php');
         exit;
