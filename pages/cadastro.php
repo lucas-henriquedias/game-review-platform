@@ -1,7 +1,7 @@
 <?php 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require 'C:/xampp/htdocs/game-review-platform/php/db.php';
+    require '../php/db.php';
 
     $nome     = $_POST['nome'];
     $usuario  = $_POST['usuario'];
@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $senha    = $_POST['senha'];
     $dataNasc = $_POST['dataNascimento'];
 
-    $result = $conexao->query("INSERT INTO usuarios (nome, usuario, email, senha, data_nasc)
+    $result = $conexao->query("INSERT INTO usuarios (nome, usuario, email, senha, dataNasc)
     VALUES ('$nome', '$usuario', '$email', '$senha', '$dataNasc')");
 
     if ($result) {

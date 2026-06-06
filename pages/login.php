@@ -3,7 +3,7 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require 'C:/xampp/htdocs/game-review-platform/php/db.php';
+    require '../php/db.php';
 
     $usuario = $_POST['usuario'];
     $senha   = $_POST['senha'];
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
         $_SESSION['nome'] = $user['nome'];
-        header('Location: ');   //<-- Aqui tem q entrar o nome do arquivo php da página principal do site.
+        header('Location: principal.php');
         exit;
 
     } else {
