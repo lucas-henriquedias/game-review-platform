@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 if (!isset($_SESSION['nome'])) {
     header('Location: login.php');
@@ -9,22 +10,27 @@ require '../php/db.php';
 
 // Salva nova review
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $jogo      = $_POST['jogo'];
+    $jogo_id      = $_POST['jogo_id'];
     $nota      = $_POST['nota'];
     $comentario = $_POST['comentario'];
     $usuario_id = $_SESSION['usuario_id'];
 
-    $conexao->query("INSERT INTO reviews (usuario_id, jogo, nota, comentario)
-                     VALUES ('$usuario_id', '$jogo', '$nota', '$comentario')");
+    $conexao->query("INSERT INTO reviews (usuario_id, jogo_id, nota, comentario) 
+    VALUES ('$usuario_id', '$jogo_id', '$nota', '$comentario')");
+
+    header('Location: review.php');
+    exit;
 }
+
+$jogos = $conexao->query("SELECT id, nome FROM jogos ORDER BY nome ASC");
 
 // Busca todas as reviews
 $reviews = $conexao->query("
-    SELECT r.jogo, r.nota, r.comentario, u.usuario, r.data_criado
+    SELECT r.nota, r.comentario, u.usuario, j.nome AS jogo, r.data_criado
     FROM reviews r
     JOIN usuarios u ON r.usuario_id = u.id
-    ORDER BY r.data_criado DESC
-");
+    JOIN jogos j ON r.jogo_id = j.id
+    ORDER BY r.data_criado DESC");
 
 ?>
 
@@ -85,13 +91,25 @@ $reviews = $conexao->query("
 
             <main class="main-content">
                 <div class="game-cover">
-                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000" alt="Capa do Jogo">
+                    <img id="capa-jogo" src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000" alt="Capa do Jogo">
                 </div>
 
                 <div class="review-form-container">
                     <h2>Deixe sua opinião</h2>
                     <form action="review.php" method="POST">
-                        <input type="text" name="jogo" placeholder="Nome do jogo" required>
+
+                        <input type="hidden" name="jogo_id" id="jogo_id">
+
+                        <div class="search-box">
+                            <input type="text" id="pesquisa-jogo" placeholder="Pesquisar jogo..." onkeyup="filtrarJogos()" autocomplete="off">
+                            <div id="lista-jogos-dropdown">
+                                <?php while ($jogo = $jogos->fetch_assoc()): ?>
+                                <div onclick="selecionarJogo(<?php echo $jogo['id']; ?>, '<?php echo addslashes($jogo['nome']); ?>')">
+                                    <?php echo $jogo['nome']; ?>
+                                </div>
+                                <?php endwhile; ?>
+                            </div>
+                        </div>
 
                         <select name="nota" required>
                             <option value="" disabled selected>Sua nota</option>
@@ -127,5 +145,6 @@ $reviews = $conexao->query("
     </div>
 
     <script src="../js/menu_lateral.js"></script>
+    <script src="../js/review.js"></script>
 </body>
 </html>

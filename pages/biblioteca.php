@@ -1,12 +1,14 @@
 <?php
 
 session_start();
-
 if (!isset($_SESSION['nome'])) {
     header('Location: login.php');
     exit;
 }
 
+require '../php/db.php';
+
+$jogos = $conexao->query("SELECT * FROM jogos ORDER BY nota DESC");
 ?>
 
 
@@ -88,42 +90,17 @@ if (!isset($_SESSION['nome'])) {
             </div>
 
             <div class="container-games" id="lista-jogos">
+                <?php while ($jogo = $jogos->fetch_assoc()): ?>
                 <div class="game-card">
-                    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/8870/header.jpg" alt="Bioshock Infinite">
+                    <img src="<?php echo $jogo['imagem']; ?>" alt="<?php echo $jogo['nome']; ?>">
                     <div class="game-info">
-                        <h2>Bioshock Infinite</h2>
-                        <div class="nota">⭐ 9.5/10</div>
-                        <p>FPS com narrativa profunda em Columbia.</p>
-                        <span class="categoria">FPS / Ação</span>
+                        <h2><?php echo $jogo['nome']; ?></h2>
+                        <div class="nota">⭐ <?php echo $jogo['nota']; ?>/10</div>
+                        <p><?php echo $jogo['descricao']; ?></p>
+                        <span class="categoria"><?php echo $jogo['categoria']; ?></span>
                     </div>
                 </div>
-                <div class="game-card">
-                    <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/397740/header.jpg" alt="Hylics">
-                    <div class="game-info">
-                        <h2>Hylics</h2>
-                        <div class="nota">⭐ 8.7/10</div>
-                        <p>RPG surrealista psicodélico.</p>
-                        <span class="categoria">RPG</span>
-                    </div>
-                </div>
-                <div class="game-card">
-                    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/440/header.jpg" alt="Team Fortress 2">
-                    <div class="game-info">
-                        <h2>Team Fortress 2</h2>
-                        <div class="nota">⭐ 9.4/10</div>
-                        <p>FPS multiplayer clássico.</p>
-                        <span class="categoria">Multiplayer</span>
-                    </div>
-                </div>
-                <div class="game-card">
-                    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg" alt="Elden Ring">
-                    <div class="game-info">
-                        <h2>Elden Ring</h2>
-                        <div class="nota">⭐ 10/10</div>
-                        <p>RPG mundo aberto da FromSoftware.</p>
-                        <span class="categoria">Soulslike</span>
-                    </div>
-                </div>
+                <?php endwhile; ?>
             </div>
 
         </div>

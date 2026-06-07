@@ -254,3 +254,44 @@ ul li.sidebar_item a .sidebar_text {
     white-space: nowrap; 
     letter-spacing: 0.5px;
 }
+
+.search-box { 
+    position: relative; 
+    margin-bottom: 10px; 
+}
+
+.search-box input { 
+    width: 100%; 
+    padding: 10px; 
+    background: #121214; 
+    border: 1px solid #29292e; 
+    border-radius: 4px; 
+    color: white; 
+    font-size: 14px; 
+}
+
+.search-box input:focus { 
+    outline: none; 
+    border-color: #4ea8de; }
+
+#lista-jogos-dropdown { 
+    display: none; 
+    position: absolute; 
+    width: 100%; 
+    background: #1e1e1e; 
+    border: 1px solid #29292e; 
+    border-radius: 4px; 
+    max-height: 200px; 
+    overflow-y: auto; 
+    z-index: 999; 
+}
+
+#lista-jogos-dropdown div { 
+    padding: 10px; 
+    cursor: pointer; 
+    color: white; 
+}
+
+#lista-jogos-dropdown div:hover { 
+    background: #2563eb; 
+}
