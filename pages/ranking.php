@@ -32,7 +32,7 @@ if (!isset($_SESSION['nome'])) {
                 </a>
             </li>
             <li class="sidebar_item">
-                <a href="#">
+                <a href="biblioteca.php">
                     <span class="sidebar_icon"><i class="bi bi-book"></i></span>
                     <span class="sidebar_text">BIBLIOTECA</span>
                 </a>
@@ -44,7 +44,7 @@ if (!isset($_SESSION['nome'])) {
                 </a>
             </li>
             <li class="sidebar_item">
-                <a href="#">
+                <a href="review.php">
                     <span class="sidebar_icon"><i class="bi bi-chat-left-text-fill"></i></span>
                     <span class="sidebar_text">REVIEW</span>
                 </a>
