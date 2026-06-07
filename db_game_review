@@ -1,3 +1,4 @@
+
 CREATE DATABASE db_game_review;
 USE db_game_review;
 
@@ -10,6 +11,15 @@ CREATE TABLE usuarios (
     dataNasc DATE         NOT NULL
 );
 
+CREATE TABLE jogos (
+    id        INT AUTO_INCREMENT PRIMARY KEY,
+    nome      VARCHAR(100) NOT NULL,
+    descricao VARCHAR(500),
+    categoria VARCHAR(50),
+    nota      DECIMAL(3,1),
+    imagem    VARCHAR(500)
+);
+
 CREATE TABLE reviews (
     id         INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT          NOT NULL,
@@ -17,6 +27,9 @@ CREATE TABLE reviews (
     nota       INT          NOT NULL,
     comentario VARCHAR(500),
     data_criado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    jogo_id    INT,
     
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    FOREIGN KEY (jogo_id) REFERENCES jogos(id)
 );
+
