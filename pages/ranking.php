@@ -2,7 +2,7 @@
 
 session_start();
 
-if (!isset($_SESSION['nome'])) {
+if (!isset($_SESSION['usuario_id'])) {
     header('Location: login.php');
     exit;
 }
@@ -15,8 +15,8 @@ if (!isset($_SESSION['nome'])) {
     <meta charset="UTF-8">
     <title>Ranking</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../css/principal.css">
-    <link rel="stylesheet" href="../css/ranking.css">
+    <link rel="stylesheet" href="../css/estrutura.css">
+    <link rel="stylesheet" href="../css/pages.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 <body>
@@ -50,7 +50,7 @@ if (!isset($_SESSION['nome'])) {
                 </a>
             </li>
             <li class="sidebar_item">
-                <a href="#">
+                <a href="perfil.php">
                     <span class="sidebar_icon"><i class="bi bi-person-fill"></i></span>
                     <span class="sidebar_text">PERFIL</span>
                 </a>

@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if (!isset($_SESSION['nome'])) {
+if (!isset($_SESSION['usuario_id'])) {
     header('Location: login.php');
     exit;
 }
@@ -19,8 +19,8 @@ $jogos = $conexao->query("SELECT * FROM jogos ORDER BY nota DESC");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biblioteca</title>
-    <link rel="stylesheet" href="../css/principal.css">
-    <link rel="stylesheet" href="../css/biblioteca.css">
+    <link rel="stylesheet" href="../css/estrutura.css">
+    <link rel="stylesheet" href="../css/pages.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
@@ -55,7 +55,7 @@ $jogos = $conexao->query("SELECT * FROM jogos ORDER BY nota DESC");
                 </a>
             </li>
             <li class="sidebar_item">
-                <a href="#">
+                <a href="perfil.php">
                     <span class="sidebar_icon"><i class="bi bi-person-fill"></i></span>
                     <span class="sidebar_text">PERFIL</span>
                 </a>
