@@ -72,12 +72,11 @@ INSERT INTO reviews (usuario_id, jogo_id, nota, comentario) VALUES
 (1, (SELECT id FROM jogos WHERE nome = 'Resident Evil 4'), 4, 'Remasterização perfeita. Terror e ação bem equilibrados.'),
 (1, (SELECT id FROM jogos WHERE nome = 'Hollow Knight'), 5, 'Difícil mas extremamente recompensador. Arte linda!'),
 (5, (SELECT id FROM jogos WHERE nome = 'Stardew Valley'), 4, 'Relaxante e viciante ao mesmo tempo. Ótimo para descansar.'),
-(2,'Cuphead', (SELECT id FROM jogos WHERE nome='Cuphead'), 5, 'Os chefes são difíceis, mas a sensação de vitória compensa tudo.'),
-(2,'Coffee Talk', (SELECT id FROM jogos WHERE nome='Coffee Talk'), 5, 'Uma experiência extremamente confortável e relaxante.'),
-(3,'Doki Doki Literature Club Plus!', (SELECT id FROM jogos WHERE nome='Doki Doki Literature Club Plus!'), 5, 'Entrei esperando um romance e saí traumatizada. Excelente.'),
-(3,'Milk outside a bag of milk outside a bag of milk', (SELECT id FROM jogos WHERE nome='Milk outside a bag of milk outside a bag of milk'), 4, 'Representa ansiedade e isolamento de forma muito interessante.'),
-(4,'Five Nights at Freddys: Into the Pit', (SELECT id FROM jogos WHERE nome='Five Nights at Freddys: Into the Pit'), 5, 'Uma das melhores adaptações do universo FNAF para os jogos.'),
-(4,'ENA: Dream BBQ', (SELECT id FROM jogos WHERE nome='ENA: Dream BBQ'), 5, 'Parece um sonho febril do começo ao fim. Adorei.'),
-(4,'EA SPORTS FC 25', (SELECT id FROM jogos WHERE nome='EA SPORTS FC 25'), 4, 'Bom jogo de futebol, apesar de alguns problemas nos servidores.');
-
+(2, (SELECT id FROM jogos WHERE nome='Cuphead'), 5, 'Os chefes são difíceis, mas a sensação de vitória compensa tudo.'),
+(2, (SELECT id FROM jogos WHERE nome='Coffee Talk'), 5, 'Uma experiência extremamente confortável e relaxante.'),
+(3, (SELECT id FROM jogos WHERE nome='Doki Doki Literature Club Plus!'), 5, 'Entrei esperando um romance e sai traumatizada. Excelente.'),
+(3, (SELECT id FROM jogos WHERE nome='Milk outside a bag of milk outside a bag of milk'), 4, 'Representa ansiedade e isolamento de forma muito interessante.'),
+(4, (SELECT id FROM jogos WHERE nome='Five Nights at Freddys: Into the Pit'), 5, 'Uma das melhores adaptações do')
+(4, (SELECT id FROM jogos WHERE nome='ENA: Dream BBQ'), 5, 'Parece um sonho febril do começo ao fim. Adorei.'),
+(4, (SELECT id FROM jogos WHERE nome='EA SPORTS FC 25'), 4, 'Bom jogo de futebol, apesar de alguns problemas nos servidores.');
 
