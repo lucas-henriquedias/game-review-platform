@@ -49,12 +49,6 @@ if (!isset($_SESSION['usuario_id'])) {
                     <span class="sidebar_text">REVIEW</span>
                 </a>
             </li>
-            <li class="sidebar_item">
-                <a href="perfil.php">
-                    <span class="sidebar_icon"><i class="bi bi-person-fill"></i></span>
-                    <span class="sidebar_text">PERFIL</span>
-                </a>
-            </li>
         </ul>
     </nav>
 

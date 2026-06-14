@@ -9,6 +9,9 @@ if (!isset($_SESSION['usuario_id'])) {
 require '../php/db.php';
 
 $jogos = $conexao->query("SELECT * FROM jogos ORDER BY nota DESC");
+
+$totalJogos = $conexao->query("SELECT COUNT(id) AS totaljogos FROM jogos")->fetch_assoc();
+
 ?>
 
 
@@ -54,12 +57,6 @@ $jogos = $conexao->query("SELECT * FROM jogos ORDER BY nota DESC");
                     <span class="sidebar_text">REVIEW</span>
                 </a>
             </li>
-            <li class="sidebar_item">
-                <a href="perfil.php">
-                    <span class="sidebar_icon"><i class="bi bi-person-fill"></i></span>
-                    <span class="sidebar_text">PERFIL</span>
-                </a>
-            </li>
         </ul>
     </nav>
 
@@ -76,7 +73,7 @@ $jogos = $conexao->query("SELECT * FROM jogos ORDER BY nota DESC");
 
             <div class="dashboard">
                 <div class="card-status">
-                    <h2>10</h2>
+                    <h2><?php echo $totalJogos['totaljogos'];?></h2>
                     <p>Jogos Avaliados</p>
                 </div>
                 <div class="card-status">

@@ -45,14 +45,39 @@ INSERT INTO jogos (nome, descricao, categoria, nota, imagem) VALUES
 ('Minecraft', 'O ápice da liberdade criativa e sobrevivência em um mundo infinito.', 'Sobrevivência / Criativo', 9.0, 'https://cdn.cloudflare.steamstatic.com/steam/apps/1672970/header.jpg'),
 ('Terraria', 'RPG de ação 2D frenético e lotado de chefes épicos.', 'Ação / Aventura', 8.9, 'https://cdn.cloudflare.steamstatic.com/steam/apps/105600/header.jpg'),
 ('Hollow Knight', 'Metroidvania com combate cirúrgico e atmosfera melancólica impecável.', 'Metroidvania', 9.4, 'https://cdn.cloudflare.steamstatic.com/steam/apps/367520/header.jpg'),
-('Stardew Valley', 'Simulador de fazenda definitivo para relaxar e esquecer da rotina.', 'Simulação', 9.5, 'https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg');
+('Stardew Valley', 'Simulador de fazenda definitivo para relaxar e esquecer da rotina.', 'Simulação', 9.5, 'https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg'),
+('The Witcher 3', 'RPG épico com mundo aberto e narrativa excepcional.', 'RPG', 9.8, 'https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg'),
+('Portal 2', 'Puzzle cooperativo e singleplayer extremamente criativo.', 'Puzzle', 9.6, 'https://cdn.cloudflare.steamstatic.com/steam/apps/620/header.jpg'),
+('Five Nights at Freddys: Into the Pit', 'Uma aventura de terror inspirada nos livros de FNAF, com viagens no tempo, mistérios e perseguições assustadoras.', 'Terror / Aventura', 8.8, 'https://cdn.cloudflare.steamstatic.com/steam/apps/2638370/header.jpg'),
+('EA SPORTS FC 25', 'Simulador de futebol com clubes, seleções e modos competitivos online.', 'Esporte', 8.2, 'https://cdn.cloudflare.steamstatic.com/steam/apps/2669320/header.jpg'),
+('Cuphead', 'Jogo de ação e plataforma com visual inspirado em desenhos dos anos 1930 e chefes extremamente desafiadores.', 'Plataforma / Ação', 9.4, 'https://cdn.cloudflare.steamstatic.com/steam/apps/268910/header.jpg'),
+('ENA: Dream BBQ', 'Aventura surrealista baseada na série animada ENA, cheia de personagens estranhos e cenários únicos.', 'Aventura', 9.0, 'https://cdn.cloudflare.steamstatic.com/steam/apps/2134320/header.jpg'),
+('Milk outside a bag of milk', 'Visual novel psicológica focada nos pensamentos e inseguranças de uma jovem garota.', 'Visual Novel', 8.7, 'https://cdn.cloudflare.steamstatic.com/steam/apps/1604000/header.jpg'),
+('Doki Doki Literature Club Plus!', 'Visual novel que começa como um romance escolar e se transforma em uma experiência psicológica perturbadora.', 'Visual Novel / Terror', 9.1, 'https://cdn.cloudflare.steamstatic.com/steam/apps/1388880/header.jpg'),
+('Coffee Talk', 'Visual novel relaxante onde você administra um café e conversa com clientes em uma Seattle alternativa.', 'Visual Novel / Simulação', 9.2, 'https://cdn.cloudflare.steamstatic.com/steam/apps/914800/header.jpg');
+
+
+INSERT INTO usuarios (nome, usuario, email, senha, dataNasc) VALUES
+('Lucas Henrique', 'Lazy_Bones', 'lucas.henrique@gamil.com', '123456', '2006-09-11'),
+('Pedro Lucas', 'Peixe_XD', 'pedro.lucas@email.com', '123456', '2000-04-15'),
+('Ariel', 'Zezinho_Berranteiro', 'ariel@email.com', '123456', '2001-08-21'),
+('Eduardo', 'Edu_gamer', 'eduardo@email.com', '123456', '1999-12-03');
 
 
 -- Reviews de exemplo (usuario_id = 1, assumindo que você já criou um usuário)
 INSERT INTO reviews (usuario_id, jogo_id, nota, comentario) VALUES
-(1, (SELECT id FROM jogos WHERE nome = 'Elden Ring'), 5, 'Um dos melhores jogos que já joguei. Mundo incrível e desafiador!'),
+(2, (SELECT id FROM jogos WHERE nome = 'Elden Ring'), 5, 'Um dos melhores jogos que já joguei. Mundo incrível e desafiador!'),
 (1, (SELECT id FROM jogos WHERE nome = 'Red Dead Redemption 2'), 5, 'A história é emocionante e o mundo aberto é lindo demais.'),
-(1, (SELECT id FROM jogos WHERE nome = 'God of War Ragnarok'), 5, 'Continuação épica! Os personagens são incríveis.'),
+(3, (SELECT id FROM jogos WHERE nome = 'God of War Ragnarok'), 5, 'Continuação épica! Os personagens são incríveis.'),
 (1, (SELECT id FROM jogos WHERE nome = 'Resident Evil 4'), 4, 'Remasterização perfeita. Terror e ação bem equilibrados.'),
 (1, (SELECT id FROM jogos WHERE nome = 'Hollow Knight'), 5, 'Difícil mas extremamente recompensador. Arte linda!'),
-(1, (SELECT id FROM jogos WHERE nome = 'Stardew Valley'), 4, 'Relaxante e viciante ao mesmo tempo. Ótimo para descansar.');
+(5, (SELECT id FROM jogos WHERE nome = 'Stardew Valley'), 4, 'Relaxante e viciante ao mesmo tempo. Ótimo para descansar.'),
+(2,'Cuphead', (SELECT id FROM jogos WHERE nome='Cuphead'), 5, 'Os chefes são difíceis, mas a sensação de vitória compensa tudo.'),
+(2,'Coffee Talk', (SELECT id FROM jogos WHERE nome='Coffee Talk'), 5, 'Uma experiência extremamente confortável e relaxante.'),
+(3,'Doki Doki Literature Club Plus!', (SELECT id FROM jogos WHERE nome='Doki Doki Literature Club Plus!'), 5, 'Entrei esperando um romance e saí traumatizada. Excelente.'),
+(3,'Milk outside a bag of milk outside a bag of milk', (SELECT id FROM jogos WHERE nome='Milk outside a bag of milk outside a bag of milk'), 4, 'Representa ansiedade e isolamento de forma muito interessante.'),
+(4,'Five Nights at Freddys: Into the Pit', (SELECT id FROM jogos WHERE nome='Five Nights at Freddys: Into the Pit'), 5, 'Uma das melhores adaptações do universo FNAF para os jogos.'),
+(4,'ENA: Dream BBQ', (SELECT id FROM jogos WHERE nome='ENA: Dream BBQ'), 5, 'Parece um sonho febril do começo ao fim. Adorei.'),
+(4,'EA SPORTS FC 25', (SELECT id FROM jogos WHERE nome='EA SPORTS FC 25'), 4, 'Bom jogo de futebol, apesar de alguns problemas nos servidores.');
+
+
