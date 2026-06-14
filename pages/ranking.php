@@ -54,7 +54,7 @@ if (!isset($_SESSION['usuario_id'])) {
 
     <main class="conteudo-principal">
         <div class="w-full max-w-3xl p-8 mx-auto">
-            <h1 class="text-6xl font-black text-center mb-10 text-amber-400">RANKING</h1>
+            <h1 class="text-6xl font-black text-center mb-10 text-sky-400">RANKING</h1>
             <div id="lista-jogos"></div>
         </div>
     </main>
