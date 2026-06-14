@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (!isset($_SESSION['usuario_id'])) {
     header('Location: login.php');
@@ -54,14 +56,14 @@ if (!isset($_SESSION['usuario_id'])) {
 
     <main class="conteudo-principal">
         <div class="w-full max-w-3xl p-8 mx-auto">
-            <h1 class="text-6xl font-black text-center mb-10 text-sky-400">RANKING</h1>
+           <h1 class="text-4xl font-bold text-center mb-10 text-sky-400">RANKING</h1>
             <div id="lista-jogos"></div>
         </div>
     </main>
 
     <div id="modalJogo" class="modal fixed inset-0 bg-black/80 justify-center items-center" onclick="fecharModal(event)">
         <div class="bg-slate-900 p-6 rounded-2xl w-[400px] relative">
-            <button class="absolute top-2 right-4 text-3xl text-slate-400 hover:text-white" onclick="document.getElementById('modalJogo').classList.remove('ativo')">&times;</button>
+            <button class="absolute top-4 right-4 text-2xl text-slate-400 hover:text-white z-10 bg-slate-900/80 rounded-full w-8 h-8 flex items-center justify-center border border-slate-700/50" onclick="document.getElementById('modalJogo').classList.remove('ativo')">&times;</button>
             <img id="modalCapa" class="rounded-xl mb-4">
             <h2 id="modalNomeJogo" class="text-2xl font-bold"></h2>
             <p id="modalNotaJogo" class="text-amber-400 mb-3 font-bold"></p>
