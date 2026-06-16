@@ -112,4 +112,8 @@ Desenvolvido por:
 - Lucas Henrique Dias de Medeiros.
 - Pedro Lucas Peixe Galdino Borges.
 
+## 📄 Licença
+
+Este projeto está licenciado sob a licença MIT.
+Consulte o arquivo [LICENSE](LICENSE) para mais informações.
 
