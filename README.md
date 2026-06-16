@@ -93,7 +93,7 @@ Esse script criará:
 Abra o navegador e acesse o link:
 
 ```text
-http://localhost/game-review-platform
+http://localhost/game-review-platform/pages/login.php
 ```
 
 ## ✨ Funcionalidades
