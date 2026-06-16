@@ -111,6 +111,7 @@ http://localhost/game-review-platform
 Desenvolvido por:
 - Lucas Henrique Dias de Medeiros.
 - Pedro Lucas Peixe Galdino Borges.
+- Ariel Correia Silva.
 
 ## 📄 Licença
 
