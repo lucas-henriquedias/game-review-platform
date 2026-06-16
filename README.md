@@ -113,6 +113,8 @@ Desenvolvido por:
 - Pedro Lucas Peixe Galdino Borges
 - Ariel Correia Silva
 - Manoel Marques da Silva Neto
+- Eduardo Henrique da Silva Alves
+- Neythan Cauã Pereira Gomes da Fonseca
 
 ## 📄 Licença
 
