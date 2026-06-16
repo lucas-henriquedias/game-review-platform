@@ -23,11 +23,10 @@ CREATE TABLE jogos (
 CREATE TABLE reviews (
     id         INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT          NOT NULL,
-    jogo       VARCHAR(100) NOT NULL,
     nota       INT          NOT NULL,
     comentario VARCHAR(500),
     data_criado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    jogo_id    INT,
+    jogo_id    INT          NOT NULL,
     
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
     FOREIGN KEY (jogo_id) REFERENCES jogos(id)
@@ -71,12 +70,12 @@ INSERT INTO reviews (usuario_id, jogo_id, nota, comentario) VALUES
 (3, (SELECT id FROM jogos WHERE nome = 'God of War Ragnarok'), 5, 'Continuação épica! Os personagens são incríveis.'),
 (1, (SELECT id FROM jogos WHERE nome = 'Resident Evil 4'), 4, 'Remasterização perfeita. Terror e ação bem equilibrados.'),
 (1, (SELECT id FROM jogos WHERE nome = 'Hollow Knight'), 5, 'Difícil mas extremamente recompensador. Arte linda!'),
-(5, (SELECT id FROM jogos WHERE nome = 'Stardew Valley'), 4, 'Relaxante e viciante ao mesmo tempo. Ótimo para descansar.'),
+(2, (SELECT id FROM jogos WHERE nome = 'Stardew Valley'), 4, 'Relaxante e viciante ao mesmo tempo. Ótimo para descansar.'),
 (2, (SELECT id FROM jogos WHERE nome='Cuphead'), 5, 'Os chefes são difíceis, mas a sensação de vitória compensa tudo.'),
 (2, (SELECT id FROM jogos WHERE nome='Coffee Talk'), 5, 'Uma experiência extremamente confortável e relaxante.'),
 (3, (SELECT id FROM jogos WHERE nome='Doki Doki Literature Club Plus!'), 5, 'Entrei esperando um romance e sai traumatizada. Excelente.'),
-(3, (SELECT id FROM jogos WHERE nome='Milk outside a bag of milk outside a bag of milk'), 4, 'Representa ansiedade e isolamento de forma muito interessante.'),
-(4, (SELECT id FROM jogos WHERE nome='Five Nights at Freddys: Into the Pit'), 5, 'Uma das melhores adaptações do'), -- <--- ADICIONE A VÍRGULA AQUI
+(3, (SELECT id FROM jogos WHERE nome='Milk outside a bag of milk'), 4, 'Representa ansiedade e isolamento de forma muito interessante.'),
+(4, (SELECT id FROM jogos WHERE nome='Five Nights at Freddys: Into the Pit'), 5, 'Uma das melhores adaptações de FNAF para os jogos.'),
 (4, (SELECT id FROM jogos WHERE nome='ENA: Dream BBQ'), 5, 'Parece um sonho febril do começo ao fim. Adorei.'),
-(4, (SELECT id FROM jogos WHERE nome='EA SPORTS FC 25'), 4, 'Bom jogo de futebol, apesar de alguns problemas nos servidores.'
+(4, (SELECT id FROM jogos WHERE nome='EA SPORTS FC 25'), 4, 'Bom jogo de futebol, apesar de alguns problemas nos servidores.');
 
