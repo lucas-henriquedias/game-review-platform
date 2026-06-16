@@ -109,9 +109,10 @@ http://localhost/game-review-platform
 ## 👨‍💻 Autor
 
 Desenvolvido por:
-- Lucas Henrique Dias de Medeiros.
-- Pedro Lucas Peixe Galdino Borges.
-- Ariel Correia Silva.
+- Lucas Henrique Dias de Medeiros
+- Pedro Lucas Peixe Galdino Borges
+- Ariel Correia Silva
+- Manoel Marques da Silva Neto
 
 ## 📄 Licença
 
