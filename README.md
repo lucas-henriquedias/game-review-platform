@@ -12,6 +12,15 @@ O objetivo da aplicação é fornecer um ambiente onde usuários possam:
 - Ler reviews de outros usuários.
 - Compartilhar suas próprias opiniões sobre jogos.
 
+## ✨ Funcionalidades
+
+- Cadastro e Login de usuários
+- Visualização de jogos
+- Sistema de avaliações
+- Comentários e reviews
+- Categorias de jogos
+- Exibição de notas
+
 ## 🛠️ Tecnologias Utilizadas
 
 - HTML5
@@ -95,16 +104,6 @@ Abra o navegador e acesse o link:
 ```text
 http://localhost/game-review-platform/pages/login.php
 ```
-
-## ✨ Funcionalidades
-
-- Cadastro e Login de usuários
-- Visualização de jogos
-- Sistema de avaliações
-- Comentários e reviews
-- Categorias de jogos
-- Exibição de notas
-
 
 ## 👨‍💻 Autor
 
