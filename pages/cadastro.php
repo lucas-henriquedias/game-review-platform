@@ -1,5 +1,4 @@
-<?php
-//session_start();
+<?php 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require '../php/db.php';
@@ -10,11 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $senha    = $_POST['senha'];
     $dataNasc = $_POST['dataNascimento'];
 
-    $result = pg_query_params(
-        $conexao, 
-        "INSERT INTO usuarios (nome, usuario, email, senha, dataNasc) VALUES ($1, $2, $3, $4, $5)",
-        [$nome, $usuario, $email, $senha, $dataNasc]
-    );
+    $result = $conexao->query("INSERT INTO usuarios (nome, usuario, email, senha, dataNasc)
+    VALUES ('$nome', '$usuario', '$email', '$senha', '$dataNasc')");
 
     if ($result) {
         header('Location: login.php');
@@ -23,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $erro = "Erro! Usuário ou email já existe!";
     }
 }
+
 ?>
 
 <!DOCTYPE html>

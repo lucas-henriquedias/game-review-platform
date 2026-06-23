@@ -1,9 +1,8 @@
-
 let detalhes = {};
 const lista = document.getElementById('lista-jogos');
 const modal = document.getElementById('modalJogo');
 
-
+// BUSCA OS DADOS DO PHP
 fetch('../php/dados_ranking.php')
 .then(r => r.json())
 .then(dados => {
@@ -11,6 +10,7 @@ fetch('../php/dados_ranking.php')
     let posicion = 1;
 
     for (const [jogo, nota] of Object.entries(dados.avaliacoes)) {
+        // Se o professor pedir para mudar a cor do texto do card, mexa nas classes abaixo
         lista.innerHTML += `
         <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl mb-4 cursor-pointer hover:scale-[1.02] hover:border-slate-600 transition-all duration-300 shadow-lg"
              onclick="abrirModal('${jogo}', '${nota}')">
@@ -18,7 +18,7 @@ fetch('../php/dados_ranking.php')
                 ${posicion}º - ${jogo}
             </h2>
             <p class="text-amber-400 font-medium">
-                Nota: ${nota}/5 ⭐
+                Nota: ${nota} ⭐
             </p>
         </div>
         `;
@@ -30,6 +30,7 @@ fetch('../php/dados_ranking.php')
 function abrirModal(nome, nota) {
     const jogo = detalhes[nome];
 
+    // MELHORIA: Se não tiver detalhes cadastrados no PHP, a gente cria um padrão para o app não travar
     const jogoDados = jogo ? jogo : {
         capa: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=500",
         comentario: "Este jogo ainda não possui uma review detalhada.",
@@ -38,7 +39,7 @@ function abrirModal(nome, nota) {
 
     document.getElementById('modalCapa').src = jogoDados.capa;
     document.getElementById('modalNomeJogo').innerText = nome;
-    document.getElementById('modalNotaJogo').innerText = nota + '/5 ⭐';
+    document.getElementById('modalNotaJogo').innerText = nota + ' ⭐';
     document.getElementById('modalComentario').innerText = "💬 " + jogoDados.comentario;
     document.getElementById('modalDicas').innerText = "💡 Dica: " + jogoDados.dicas;
 

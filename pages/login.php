@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -7,23 +8,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $usuario = $_POST['usuario'];
     $senha   = $_POST['senha'];
 
-    $result = pg_query_params(
-        $conexao,
-        "SELECT * FROM usuarios WHERE usuario = $1 AND senha = $2",
-        [$usuario, $senha]
-    );
+    $result = $conexao->query("SELECT * FROM usuarios 
+    WHERE usuario='$usuario' AND senha='$senha'");
 
-    if (pg_num_rows($result) > 0) {
-        $user = pg_fetch_assoc($result);
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
         $_SESSION['usuario_id'] = $user['id'];
         $_SESSION['nome'] = $user['nome'];
-
-        var_dump(headers_sent($arquivo, $linha));
-        var_dump($arquivo, $linha);
-        exit;
-
         header('Location: principal.php');
         exit;
+
     } else {
         $erro = "Usuário ou senha incorretos!";
     }
