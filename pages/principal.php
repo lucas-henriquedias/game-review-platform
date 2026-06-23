@@ -1,16 +1,16 @@
-
 <?php
-session_start();
 
+session_start();
 if (!isset($_SESSION['usuario_id'])) {
     header('Location: login.php');
     exit;
 }
 
 require '../php/db.php';
-$jogos_populares = $conexao->query("SELECT * FROM jogos ORDER BY nota DESC LIMIT 6");
 
-$reviews_recentes = $conexao->query("
+$jogos_populares = pg_query($conexao, "SELECT * FROM jogos ORDER BY nota DESC LIMIT 6");
+
+$reviews_recentes = pg_query($conexao, "
     SELECT r.*, j.nome AS jogo_nome
     FROM reviews r
     JOIN jogos j ON r.jogo_id = j.id
@@ -19,6 +19,7 @@ $reviews_recentes = $conexao->query("
 ");
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -79,14 +80,14 @@ $reviews_recentes = $conexao->query("
 
             <div class="popular-games">
 
-                <?php while($jogo = $jogos_populares->fetch_assoc()): ?>
+                <?php while($jogo = pg_fetch_assoc($jogos_populares)): ?>
 
                     <div class="popular-card">
                         <img src="<?= $jogo['imagem'] ?>" alt="<?= $jogo['nome'] ?>">
 
                         <div class="popular-info">
                             <h3><?= $jogo['nome'] ?></h3>
-                            <span>⭐ <?= $jogo['nota'] ?></span>
+                            <span>⭐ <?= $jogo['nota'] ?>/5</span>
                         </div>
                     </div>
 
@@ -99,7 +100,7 @@ $reviews_recentes = $conexao->query("
             <h2>📝 Reviews Recentes</h2>
 
             <div class="reviews-grid">
-                <?php while($review = $reviews_recentes->fetch_assoc()): ?>
+                <?php while($review = pg_fetch_assoc($reviews_recentes)): ?>
                     <div class="review-card">
                         <h3><?= $review['jogo_nome'] ?></h3>
                         <div class="review-nota">

@@ -8,9 +8,10 @@ if (!isset($_SESSION['usuario_id'])) {
 
 require '../php/db.php';
 
-$jogos = $conexao->query("SELECT * FROM jogos ORDER BY nota DESC");
+$jogos = pg_query($conexao, "SELECT * FROM jogos ORDER BY nota DESC");
 
-$totalJogos = $conexao->query("SELECT COUNT(id) AS totaljogos FROM jogos")->fetch_assoc();
+$totalJogosResult = pg_query($conexao, "SELECT COUNT(id) AS totaljogos FROM jogos");
+$totalJogos = pg_fetch_assoc($totalJogosResult);
 
 ?>
 
@@ -73,11 +74,11 @@ $totalJogos = $conexao->query("SELECT COUNT(id) AS totaljogos FROM jogos")->fetc
 
             <div class="dashboard">
                 <div class="card-status">
-                    <h2><?php echo $totalJogos['totaljogos'];?></h2>
+                    <h2><?php echo $totalJogos['totaljogos']; ?></h2>
                     <p>Jogos Avaliados</p>
                 </div>
                 <div class="card-status">
-                    <h2>9.4</h2>
+                    <h2>4.7</h2>
                     <p>Média Geral</p>
                 </div>
                 <div class="card-status">
@@ -87,12 +88,12 @@ $totalJogos = $conexao->query("SELECT COUNT(id) AS totaljogos FROM jogos")->fetc
             </div>
 
             <div class="container-games" id="lista-jogos">
-                <?php while ($jogo = $jogos->fetch_assoc()): ?>
+                <?php while ($jogo = pg_fetch_assoc($jogos)): ?>
                 <div class="game-card">
                     <img src="<?php echo $jogo['imagem']; ?>" alt="<?php echo $jogo['nome']; ?>">
                     <div class="game-info">
                         <h2><?php echo $jogo['nome']; ?></h2>
-                        <div class="nota">⭐ <?php echo $jogo['nota']; ?>/10</div>
+                        <div class="nota">⭐ <?php echo $jogo['nota']; ?>/5</div>
                         <p><?php echo $jogo['descricao']; ?></p>
                         <span class="categoria"><?php echo $jogo['categoria']; ?></span>
                     </div>

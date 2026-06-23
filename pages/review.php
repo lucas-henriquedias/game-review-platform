@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if (!isset($_SESSION['usuario_id'])) {
+if (!isset($_SESSION['nome'])) {
     header('Location: login.php');
     exit;
 }
@@ -10,28 +10,32 @@ require '../php/db.php';
 
 // Salva nova review
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $jogo_id      = $_POST['jogo_id'];
-    $nota      = $_POST['nota'];
+    $jogo_id    = $_POST['jogo_id'];
+    $nota       = $_POST['nota'];
     $comentario = $_POST['comentario'];
     $usuario_id = $_SESSION['usuario_id'];
 
-    $conexao->query("INSERT INTO reviews (usuario_id, jogo_id, nota, comentario) 
-    VALUES ('$usuario_id', '$jogo_id', '$nota', '$comentario')");
+    pg_query_params(
+        $conexao,
+        "INSERT INTO reviews (usuario_id, jogo_id, nota, comentario) VALUES ($1, $2, $3, $4)",
+        [$usuario_id, $jogo_id, $nota, $comentario]
+    );
 
     header('Location: review.php');
     exit;
 }
 
-$jogos = $conexao->query("SELECT id, nome FROM jogos ORDER BY nome ASC");
+// Busca jogos para o dropdown
+$jogos = pg_query($conexao, "SELECT id, nome FROM jogos ORDER BY nome ASC");
 
 // Busca todas as reviews
-$reviews = $conexao->query("
+$reviews = pg_query($conexao, "
     SELECT r.nota, r.comentario, u.usuario, j.nome AS jogo, r.data_criado
     FROM reviews r
     JOIN usuarios u ON r.usuario_id = u.id
     JOIN jogos j ON r.jogo_id = j.id
-    ORDER BY r.data_criado DESC");
-
+    ORDER BY r.data_criado DESC
+");
 ?>
 
 <!DOCTYPE html>
@@ -97,7 +101,7 @@ $reviews = $conexao->query("
                         <div class="search-box">
                             <input type="text" id="pesquisa-jogo" placeholder="Pesquisar jogo..." onkeyup="filtrarJogos()" autocomplete="off">
                             <div id="lista-jogos-dropdown">
-                                <?php while ($jogo = $jogos->fetch_assoc()): ?>
+                                <?php while ($jogo = pg_fetch_assoc($jogos)): ?>
                                 <div onclick="selecionarJogo(<?php echo $jogo['id']; ?>, '<?php echo addslashes($jogo['nome']); ?>')">
                                     <?php echo $jogo['nome']; ?>
                                 </div>
@@ -124,7 +128,7 @@ $reviews = $conexao->query("
             <section class="reviews-section">
                 <h2>Reviews da Comunidade</h2>
                 <div class="review-list">
-                    <?php while ($review = $reviews->fetch_assoc()): ?>
+                    <?php while ($review = pg_fetch_assoc($reviews)): ?>
                     <div class="review-card">
                         <div class="review-header">
                             <span class="reviewer-name"><?php echo $review['usuario']; ?> — <?php echo $review['jogo']; ?></span>
