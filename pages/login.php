@@ -17,6 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $user = pg_fetch_assoc($result);
         $_SESSION['usuario_id'] = $user['id'];
         $_SESSION['nome'] = $user['nome'];
+
+        var_dump(headers_sent($arquivo, $linha));
+        var_dump($arquivo, $linha);
+        exit;
+
         header('Location: principal.php');
         exit;
     } else {

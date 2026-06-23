@@ -5,5 +5,3 @@ $conexao = pg_connect("host=dpg-d8t3htf7f7vs73boj83g-a.oregon-postgres.render.co
 if (!$conexao) {
     die("Erro ao conectar no banco de dados.");
 }
-?>
-
